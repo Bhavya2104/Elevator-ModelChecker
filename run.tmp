@@ -1,0 +1,85 @@
+pan: ltl formula p1
+
+(Spin Version 6.4.9 -- 17 December 2018)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (p1)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 560 byte, depth reached 143, errors: 0
+      839 states, stored (1678 visited)
+     1598 states, matched
+     3276 transitions (= visited+matched)
+     4344 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.461	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.654	actual memory usage for states
+   64.000	memory used for hash table (-w24)
+    0.343	memory used for DFS stack (-m10000)
+   64.929	total actual memory usage
+
+
+unreached in proctype Input
+	Elevator3.pml:105, state 48, "min_down = req_floor"
+	Elevator3.pml:63, state 51, "((min_down<req_floor))"
+	Elevator3.pml:63, state 51, "else"
+	Elevator3.pml:110, state 58, "max_up = req_floor"
+	Elevator3.pml:54, state 61, "((max_up>req_floor))"
+	Elevator3.pml:54, state 61, "else"
+	Elevator3.pml:112, state 63, "up = 1"
+	Elevator3.pml:31, state 66, "queue[rear] = req_floor"
+	Elevator3.pml:114, state 67, "up_stop[req_floor] = 1"
+	Elevator3.pml:115, state 71, "max_up = req_floor"
+	Elevator3.pml:54, state 74, "((max_up>req_floor))"
+	Elevator3.pml:54, state 74, "else"
+	Elevator3.pml:108, state 75, "(up)"
+	Elevator3.pml:108, state 75, "else"
+	Elevator3.pml:103, state 77, "(((req_floor-cur_floor)<0))"
+	Elevator3.pml:103, state 77, "else"
+	(11 of 113 states)
+unreached in proctype Elevator
+	Elevator3.pml:23, state 19, "isempty = 1"
+	Elevator3.pml:45, state 27, "y = -(1)"
+	Elevator3.pml:174, state 45, "up_stop[cur_floor] = 0"
+	Elevator3.pml:175, state 46, "isDoorOpen = 0"
+	Elevator3.pml:176, state 47, "printf('Door closed at floor: %d\n',cur_floor)"
+	Elevator3.pml:177, state 48, "cur_dir = 1"
+	Elevator3.pml:185, state 56, "max_up = 0"
+	Elevator3.pml:186, state 57, "cur_dir = 0"
+	Elevator3.pml:187, state 58, "isDoorOpen = 1"
+	Elevator3.pml:201, state 69, "isDoorOpen = 0"
+	Elevator3.pml:202, state 70, "cur_dir = -(1)"
+	Elevator3.pml:203, state 71, "printf('Going down..\n')"
+	Elevator3.pml:207, state 73, "printf('Elevator is currently at floor: %d and Time: %d\n',cur_floor,cur_time)"
+	Elevator3.pml:214, state 78, "cur_dir = 0"
+	Elevator3.pml:215, state 79, "isDoorOpen = 1"
+	Elevator3.pml:216, state 80, "printf('Door Opened at floor: %d\n',cur_floor)"
+	Elevator3.pml:217, state 81, "down_stop[cur_floor] = 0"
+	Elevator3.pml:218, state 82, "isDoorOpen = 0"
+	Elevator3.pml:219, state 83, "printf('Door closed at floor: %d\n',cur_floor)"
+	Elevator3.pml:220, state 84, "cur_dir = -(1)"
+	Elevator3.pml:209, state 89, "((min_down>cur_floor))"
+	Elevator3.pml:209, state 89, "((min_down<=cur_floor))"
+	Elevator3.pml:228, state 92, "min_down = 10"
+	Elevator3.pml:229, state 93, "cur_dir = 0"
+	Elevator3.pml:230, state 94, "isDoorOpen = 1"
+	Elevator3.pml:232, state 96, "cur_floor = (cur_floor-1)"
+	Elevator3.pml:227, state 97, "((cur_floor==min_down))"
+	Elevator3.pml:227, state 97, "else"
+	Elevator3.pml:240, state 99, "cur_time = (cur_time+1)"
+	Elevator3.pml:241, state 100, "(run Input(cur_time))"
+	Elevator3.pml:205, state 101, "(1)"
+	Elevator3.pml:247, state 112, "-end-"
+	(30 of 112 states)
+unreached in init
+	(0 of 3 states)
+unreached in claim p1
+	_spin_nvr.tmp:6, state 6, "-end-"
+	(1 of 6 states)
+
+pan: elapsed time 0.009 seconds

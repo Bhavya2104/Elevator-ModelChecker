@@ -1,0 +1,59 @@
+never p1 {    /* !(<> ((isDoorOpen==1))) */
+accept_init:
+T0_init:
+	do
+	:: (! (((isDoorOpen==1)))) -> goto T0_init
+	od;
+}
+never p2 {    /* !([] ((! ((isDoorOpen==1))) || ((cur_dir==0)))) */
+T0_init:
+	do
+	:: atomic { (! (((! ((isDoorOpen==1))) || ((cur_dir==0))))) -> assert(!(! (((! ((isDoorOpen==1))) || ((cur_dir==0)))))) }
+	:: (1) -> goto T0_init
+	od;
+accept_all:
+	skip
+}
+never p4 {    /* !((! (((req_floor-cur_floor)<0))) || (<> ((cur_dir==-(1))))) */
+accept_init:
+T0_init:
+	do
+	:: (! ((! (((req_floor-cur_floor)<0)))) && ! (((cur_dir==-(1))))) -> goto accept_S3
+	od;
+accept_S3:
+T0_S3:
+	do
+	:: (! (((cur_dir==-(1))))) -> goto accept_S3
+	od;
+}
+never p5 {    /* !([] (<> ((! (req_floor)) || (<> (((req_floor==cur_floor)) && ((isDoorOpen==1))))))) */
+T0_init:
+	do
+	:: (! ((! (req_floor))) && ! ((((req_floor==cur_floor)) && ((isDoorOpen==1))))) -> goto accept_S2
+	:: (1) -> goto T0_init
+	od;
+accept_S2:
+	do
+	:: (! ((! (req_floor))) && ! ((((req_floor==cur_floor)) && ((isDoorOpen==1))))) -> goto accept_S2
+	od;
+}
+never p6 {    /* !([] ((! ((cur_dir!=0))) || ((isDoorOpen==0)))) */
+T0_init:
+	do
+	:: atomic { (! (((! ((cur_dir!=0))) || ((isDoorOpen==0))))) -> assert(!(! (((! ((cur_dir!=0))) || ((isDoorOpen==0)))))) }
+	:: (1) -> goto T0_init
+	od;
+accept_all:
+	skip
+}
+never p7 {    /* !([] ((! ((isDoorOpen==1))) || (<> ((isDoorOpen==0))))) */
+T0_init:
+	do
+	:: (! ((! ((isDoorOpen==1)))) && ! (((isDoorOpen==0)))) -> goto accept_S4
+	:: (1) -> goto T0_init
+	od;
+accept_S4:
+	do
+	:: (! (((isDoorOpen==0)))) -> goto accept_S4
+	od;
+}
